@@ -6,3 +6,41 @@ a:hover {
     text-decoration: none !important;
     color: #b3e5fc;
 }
+
+p {
+    color: #fff !important;
+    font-weight: bold;
+}
+
+#saveButton {
+    float: right;
+}
+
+.panel-primary>.panel-heading {
+    background-color: lightgrey;
+}
+
+a.title {
+    color: #000;
+}
+
+a.title:hover {
+    color: #039be5;
+}
+
+.modal {
+    background: none;
+}
+
+.btn {
+    float: right;
+    margin: 0px 3px;
+}
+
+.panel-primary {
+    margin: 3px 0px;
+}
+
+.panel-heading {
+    margin: 3px 0px;
+}

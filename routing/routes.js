@@ -11,12 +11,22 @@ var Article = require("../models/Article.js");
 // Routes
 // ======
 
-router.get("/", function(req, res){
-    res.render("index");
-});
+router.get("/", function(req, res) {
+    Article.find({}, function(err, data) {
+      var hbsObject = {
+          article: data
+        };
+        res.render("index", hbsObject);
+    });
+  });
 
 router.get("/saved", function(req, res){
-    res.render("saved");
+    Article.find({}, function(err, data) {
+        var hbsObject = {
+            article: data
+          };
+          res.render("saved", hbsObject);
+      });
 });
 
 // A GET request to scrape the Ars Technica website
@@ -125,13 +135,13 @@ router.get("/scrape", function(req, res) {
     router.get('/save/:id?', function (req, res) {
         // Set the _id retrieved from the req.params.id of the article the user would like to save to a variable
         var id = req.params.id;
-        // Find the news article by id
-        Article.findById(id, function (err, news) {
+        // Find the  article by id
+        Article.findById(id, function (err, article) {
             if (err) return handleError(err);
             //set saved to 1(true)
             article.saved = 1;
             //save the update in mongoDB
-            article.save(function (err, updatedNews) {
+            article.save(function (err, updatedArticle) {
                 if (err) return handleError(err);
                 //no redirect since it is only updating data and not affecting the view
             })
@@ -141,23 +151,23 @@ router.get("/scrape", function(req, res) {
 
     // Bring user to the saved html page showing all their saved articles
     router.get('/saved', function (req, res) {
-        //find all news articles
+        //find all articles
         Article.find({}, function (err, doc) {
             if (err) return handleError (err);
                 //set up data to show in handlebars
-                var hbsObject = {news: doc};
+                var hbsObject = {article: doc};
                 res.render('saved', hbsObject);
         });
     });
-    // Delete News article from teh saved articles page
+    // Delete article from the saved articles page
     router.get('/delete/:id?', function (req, res) {
         var id = req.params.id; // set the _id of the article the user would like to delete from saved to a variable
-        // Find the news article by id
-        Article.findById(id, function (err, news) {
+        // Find the  article by id
+        Article.findById(id, function (err, article) {
             article.saved = 0; //set saved to 0(false) so it will be removed from the saved page
 
             // save the updated changes to the article
-            article.save(function (err, updatedNews) {
+            article.save(function (err, updatedArticle) {
                 if (err) return handleError(err); //if err
                 res.redirect('/saved'); //redirect back to the saved page as the updated data will effect the view
             })

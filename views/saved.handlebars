@@ -4,7 +4,7 @@
     <div class="panel panel-primary">
             {{#each article}}
                 <!--if there are saved articles it will show below-->
-                {{#if saved}}
+                {{#if this.saved}}
                 <div class="panel-heading">
                     <a target="_blank" href="{{this.link}}" class="title">{{this.title}}</a>
                     <!--DELETE button-->
