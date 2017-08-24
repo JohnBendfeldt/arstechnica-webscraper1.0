@@ -1,20 +1,58 @@
 <div class="container">
-	<div class="jumbotron">
-	 	<h1>Mongo Scraper</h1>
-	 	<p>Ars Technica Edition</p>
-	</div>
+	<h3>Ars Techinica Saved Articles</h3>
 
-	<div class="panel panel-primary">
-        {{#each saved}}
-            <div class="panel-heading">
-                <a target="_blank" href="{{this.link}}" class="title">{{this.title}}</a>
-                <a href="/save/{{this._id}}" id="saveButton"><button type="button" class="btn btn-success">Save</button></a>
-                <a href="/delete/{{this._id}}" id="deleteButton"><button type="button" class="btn btn-danger">Delete</button></a>
+    <div class="panel panel-primary">
+            {{#each article}}
+                <!--if there are saved articles it will show below-->
+                {{#if saved}}
+                <div class="panel-heading">
+                    <a target="_blank" href="{{this.link}}" class="title">{{this.title}}</a>
+                    <!--DELETE button-->
+                    <a href="/delete/{{this._id}}"><button type="button" class="btn btn-danger saved-buttons">Delete</button></a>
+                    <!--ADD NOTES button with a data-value of the news articles id-->
+                    <button type="button" class="btn btn-info saved-buttons" data-toggle="modal" data-value="{{this._id}}" data-target="#noteModal">Add Notes</button>
+                </div>
+
+
+
+                <div class="panel-body">
+                    {{this.summary}}
+                    {{this.notes.body}}
+                </div>
+
+                {{/if}}
+
+            {{/each}}
+            <!-- Modal -->
+            <div id="noteModal" class="modal fade"  tabindex="-1" role="dialog" aria-labelledby="noteModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <!--title including the id of the current article-->
+                            <h5 class="modal-title" id="noteModalLabel">Note for: </h5>
+                            <!--where notes will be displayed-->
+                            <div>
+                                <ul id="notesBody">
+                                    
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="exampleTextarea">Enter New Note</label>
+                                <!--enter note text-->
+                                <textarea class="form-control" id="notestext" rows="3"></textarea>
+                            </div>
+                            <div><!--enter saved notes here--></div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" id="saveButton" class="btn btn-primary savenote">Save changes</button>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-
-        {{/each}}
-
-
+        </div>
 
 </div>

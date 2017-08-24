@@ -1,9 +1,6 @@
 
 <div class="container">
-	<div class="jumbotron">
-	 	<h1>Mongo Scraper</h1>
-	 	<p>Ars Technica Edition</p>
-	</div>
+	<h3>Ars Technica Edition</h3>
 
 	<div class="panel panel-primary">
         {{#each article}}
@@ -11,8 +8,6 @@
                 <a target="_blank" href="{{this.link}}" class="title">{{this.title}}</a>
                 <a href="/save/{{this._id}}" id="saveButton"><button type="button" class="btn btn-success">Save</button></a>
             </div>
-
-
         {{/each}}
 
 

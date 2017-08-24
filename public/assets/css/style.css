@@ -1,0 +1,8 @@
+nav, .nav-wrapper {
+    background-color: #616161;
+}
+
+a:hover {
+    text-decoration: none !important;
+    color: #b3e5fc;
+}
