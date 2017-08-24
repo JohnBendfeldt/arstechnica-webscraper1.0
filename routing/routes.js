@@ -42,7 +42,7 @@ router.get("/scrape", function(req, res) {
         var result = {};
   
         // Add the text and href of every link, and save them as properties of the result object
-        result.title = $(this).find("a").text();
+        result.title = $(this).find("h2").text();
         result.link = $(this).find("a").attr("href");
         result.about = $(this).find(".excerpt").text();
   
@@ -65,7 +65,7 @@ router.get("/scrape", function(req, res) {
       });
     });
     // Tell the browser that we finished scraping the text
-    res.redirect("/");
+    res.redirect("/articles");
   });
   
   // This will get the articles we scraped from the mongoDB
