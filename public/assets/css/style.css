@@ -14,7 +14,6 @@ p {
 
 .panel-primary>.panel-heading {
     background-color: lightgrey;
-    padding-bottom: 42px;
 }
 
 a.title {
@@ -43,10 +42,5 @@ a.title:hover {
     box-shadow: none !important;
 }
 
-.btn-success {
-    position: absolute !important;
-    right: 0px;
-    bottom: 0px;
-}
 
 
