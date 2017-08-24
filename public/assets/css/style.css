@@ -12,12 +12,9 @@ p {
     font-weight: bold;
 }
 
-#saveButton {
-    float: right;
-}
-
 .panel-primary>.panel-heading {
     background-color: lightgrey;
+    padding-bottom: 42px;
 }
 
 a.title {
@@ -33,10 +30,23 @@ a.title:hover {
 }
 
 .btn {
+    margin: 3px 3px !important;
     float: right;
-    margin: 0px 3px;
 }
 
 .panel-primary {
     margin: 5px 0px;
+    position: relative;
 }
+
+#noteModal {
+    box-shadow: none !important;
+}
+
+.btn-success {
+    position: absolute !important;
+    right: 0px;
+    bottom: 0px;
+}
+
+

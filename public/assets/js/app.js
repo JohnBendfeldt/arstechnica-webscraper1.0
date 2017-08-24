@@ -15,10 +15,8 @@ $(document).ready(function(){
             $('#notesBody').empty();
             $('#notestext').val('');
 
-            //delete button for individual note
-
             //add id of the current NEWS article to modal label
-            $('#noteModalLabel').append(' ' + thisId);
+            $('#noteModalLabel').append(thisId);
             //add notes to body of modal, will loop through if multiple notes
             for(var i = 0; i<data.notes.length; i++) {
                 var button = ' <a href=/deleteNote/' + data.notes[i]._id + '><button type="button" class="btn btn-danger">Delete</button></a>';
@@ -26,23 +24,5 @@ $(document).ready(function(){
             }
         });
     });
-
-
-
-    $(".savenote").on("click", function(){
-        // the NEWS article id
-        var thisId = $(this).attr("data-value");
-        //ajax POST
-        $.ajax({
-            method: "POST",
-            url: "/notes/" + thisId,
-            data: {
-                //note created by the user
-                body: $("#notestext").val().trim()
-            }
-        }).done(function(data){
-            //hide the modal when the submit button is clicked
-            $('#noteModal').modal('hide');
-        });
-    });
 });
+

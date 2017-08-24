@@ -64,7 +64,7 @@ router.get("/scrape", function(req, res) {
       });
     });
     // Tell the browser that we finished scraping the text
-    res.send("Scrape Complete");
+    res.redirect("/");
   });
   
   // This will get the articles we scraped from the mongoDB
@@ -143,7 +143,7 @@ router.get("/scrape", function(req, res) {
             //save the update in mongoDB
             article.save(function (err, updatedArticle) {
                 if (err) return handleError(err);
-                //no redirect since it is only updating data and not affecting the view
+                res.redirect("/saved");
             })
 
         })
@@ -192,19 +192,28 @@ router.get("/scrape", function(req, res) {
     router.post('/notes/:id', function (req, res) {
         //create a new note with req.body
         var newNote = new Note(req.body);
-        //save newNote to the db
-        newNote.save(function (err, doc) {
-            // Log any errors
-            if (err) console.log(err);
-            //find and update the note
-            Article.findOneAndUpdate(
-                {_id: req.params.id}, // find the _id by req.params.id
-                {$push: {notes: doc._id}}, //push to the notes array
-                {new: true},
-                function(err, newdoc){
-                    if (err) return handleError(err);
-                    res.send(newdoc);
+        console.log(newNote);
+        // Save the new note to mongoose
+        newNote.save(function(error, doc) {
+          // Send any errors to the browser
+          if (error) {
+            res.send(error);
+          }
+          // Otherwise
+          else {
+            // Find our user and push the new note id into the User's notes array
+            Article.findOneAndUpdate({"_id":req.params.id}, { $set: { "note": doc._id } }, { new: true }, function(err, newdoc) {
+              // Send any errors to the browser
+              if (err) {
+                res.send(err);
+              }
+              // Or send the newdoc to the browser
+              else {
+                console.log(newdoc);
+                res.send(newdoc);
+              }
             });
+          }
         });
     });
 
