@@ -15,20 +15,8 @@ $(document).ready(function(){
         $('.savenote').on('click',  function () {
                 // the NEWS article id
                 console.log("click is functioning");
-
-            //make an ajax call for the notes attached to this article
-            $.get("/notes/" + thisId, function(data){
-                console.log(data);
-                //empty modal title, textarea and notes
                 $('#noteModalLabel').empty();
-                $('#notesBody').empty();
-                $('#notestext').val('');
-
-                
-            });
-
-        });
-            
+        });       
     });
 });
 

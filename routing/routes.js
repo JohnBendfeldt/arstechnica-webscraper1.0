@@ -195,7 +195,7 @@ router.get("/scrape", function(req, res) {
     });
 
     // Add a note to a saved article
-    router.post("/", function (req, res) {
+    router.post("/notes/:id", function (req, res) {
         //create a new note with req.body
         var newNote = new Note(req.body);
         console.log(newNote);
