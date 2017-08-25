@@ -65,7 +65,12 @@ router.get("/scrape", function(req, res) {
       });
     });
     // Tell the browser that we finished scraping the text
-    res.redirect("/articles");
+    Article.find({}, function(err, data) {
+      var hbsObject = {
+          article: data
+        };
+        res.render("scraping", hbsObject);
+    });
   });
   
   // This will get the articles we scraped from the mongoDB
