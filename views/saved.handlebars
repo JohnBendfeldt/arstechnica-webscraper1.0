@@ -15,7 +15,7 @@
                     <button type="button" class="btn btn-info saved-buttons" data-toggle="modal" data-value="{{this._id}}" data-target="#noteModal">Add Notes</button>
                 </div>
                 <div class="panel-body">
-                    {{this.notes}}
+                    {{this.notes.body}}
                 </div>
                 </div>
                 {{/if}}
@@ -37,17 +37,19 @@
                                 </ul>
                             </div>
                         </div>
+                        <form class="create-update-form" action="/" method="POST">
                         <div class="modal-body">
                             <div class="form-group">
                                 <label for="notestext">Enter New Note</label>
                                 <!--enter note text-->
-                                <textarea class="form-control" id="notestext" rows="3"></textarea>
+                                <input type="text" required id="notestext" name="notes" rows="3"></input>
                             </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" id="saveButton" class="btn btn-primary">Save changes</button>
+                            <button type="submit" id="saveButton savenote" class="btn btn-primary savenote">Save changes</button>
                         </div>
+                        </form>
                     </div>
                 </div>
             </div>
