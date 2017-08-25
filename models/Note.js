@@ -9,9 +9,6 @@ var NoteSchema = new Schema({
   body: {
     type: String
   },
-  articleId: {
-    type: String
-  }
 });
 
 // Remember, Mongoose will automatically save the ObjectIds of the notes
