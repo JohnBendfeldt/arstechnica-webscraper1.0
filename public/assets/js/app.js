@@ -17,7 +17,7 @@ $(document).on("click", ".addnotes", function() {
       .done(function(data) {
         console.log(data);
         // The title of the article
-        $("#notes").append("<h4>" + data.title + "</h4>");
+        $("#notes").append("<h5>" + data.title + "</h5>");
         // A textarea to add a new note body
         $("#notes").append("<textarea id='bodyinput' name='body'></textarea>");
         // A button to submit a new note, with the id of the article saved to it
