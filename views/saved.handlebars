@@ -10,9 +10,9 @@
                     <a target="_blank" href="{{this.link}}" class="title">{{this.title}}</a>
                     <br>
                     <!--DELETE button-->
-                    <a href="/delete/{{this._id}}"><button type="button" class="btn-danger btn-sm">Delete</button></a>
+                    <a href="/delete/{{this._id}}"><button type="button" class="btn-danger btn-sm">DELETE</button></a>
                     <!--ADD NOTES button with a data-value of the news articles id-->
-                    <button type="button" class="btn btn-info addnotes" data-toggle="modal" data-value="{{this._id}}" data-target="#noteModal">Add Notes</button>
+                    <button type="button" class="btn-sm btn-info addnotes" data-toggle="modal" data-value="{{this._id}}" data-target="#noteModal">ADD NOTES</button>
                 </div>
                 <div class="panel-body">
                     {{this.about}}

@@ -13,18 +13,18 @@ nav, .nav-wrapper {
 
 a:hover {
     text-decoration: none !important;
-    color: #b3e5fc;
+    color: #449D44;
 }
 
 h3 {
     font-family: 'Montserrat', sans-serif;
-    border-bottom: 3px solid #2bbbad;
+    border-bottom: 3px solid #449D44;
     box-shadow: 3px 3px 9px;
     padding: 3px;
 }
 
 h4, h5 {
-    border-bottom: 1.5px solid #2bbbad;
+    border-bottom: 1.5px solid #449D44;
     box-shadow: 2px 2px 6px;
     padding: 3px;
     font-family: 'Slabo 27px', serif;
@@ -38,7 +38,7 @@ p {
 .panel-primary>.panel-heading {
     background-color: lightgrey;
     padding: 3px !important;
-    border-color: #2bbbad;
+    border-color: #449D44;
     border-radius: 0px;
 }
 
@@ -53,19 +53,19 @@ a.title:hover {
     color: #039be5;
 }
 
-.modal {
-    background: none;
+.btn-success {
+    margin-top: -3px;
+    float: right;
 }
 
-.btn {
-    margin: 3px 3px !important;
-    float: right;
+.modal {
+    background: none;
 }
 
 .panel-primary {
     margin: 5px 0px;
     position: relative;
-    border-color: #2bbbad;
+    border-color: #449D44;
     border-radius: 0px;
     box-shadow: 1px 1px 3px;
 }

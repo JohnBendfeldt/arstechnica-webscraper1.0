@@ -21,9 +21,9 @@ $(document).on("click", ".addnotes", function() {
         // A textarea to add a new note body
         $("#notes").append("<textarea id='bodyinput' name='body'></textarea>");
         // A button to submit a new note, with the id of the article saved to it
-        $("#notes").append("<button data-value='" + data._id + "' id='savenote' class='btn btn-info' data-dismiss='modal'>Save Note</button>");
+        $("#notes").append("<button data-value='" + data._id + "' id='savenote' class='btn-sm btn-info' data-dismiss='modal'>SAVE NOTE</button>");
         // A close button
-        $("#notes").append("<button data-dismiss='modal' class='btn-danger btn-sm'>Close</button>");
+        $("#notes").append("<button data-dismiss='modal' class='btn-danger btn-sm'>CLOSE</button>");
   
         // If there's a note in the article
         if (data.note) {
