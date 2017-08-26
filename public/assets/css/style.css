@@ -19,7 +19,9 @@ a:hover {
 h3 {
     font-family: 'Montserrat', sans-serif;
     border-bottom: 3px solid #449D44;
-    box-shadow: 3px 3px 9px;
+    color: #ffffff;
+    background-color: #000;
+    box-shadow: 3px 3px 9px #514A4A;
     padding: 3px;
 }
 
