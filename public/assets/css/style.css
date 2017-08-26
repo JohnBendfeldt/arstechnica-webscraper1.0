@@ -13,6 +13,7 @@ p {
 
 .panel-primary>.panel-heading {
     background-color: lightgrey;
+    padding: 3px !important;
 }
 
 a.title {
@@ -35,6 +36,10 @@ a.title:hover {
 .panel-primary {
     margin: 5px 0px;
     position: relative;
+}
+
+.panel-body {
+    padding: 3px !important;
 }
 
 #noteModal {
