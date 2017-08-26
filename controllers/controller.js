@@ -51,6 +51,7 @@ router.get("/scrape", function(req, res) {
         var entry = new Article(result);
   
         // Now, save that entry to the db
+        Article.update({_id: entry._id}, {$addToSet: {title: entry.title}});
         entry.save(function(err, doc) {
           // Log any errors
           if (err) {

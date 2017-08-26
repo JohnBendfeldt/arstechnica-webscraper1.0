@@ -8,16 +8,19 @@ var ArticleSchema = new Schema({
   // title is a required string
   title: {
     type: String,
-    required: true
+    required: true,
+    index : { unique: true }
   },
   // link is a required string
   link: {
     type: String,
-    required: true
+    required: true,
+    index : { unique: true }
   },
   about: {
     type: String,
-    required: true
+    required: true,
+    index : { unique: true }
   },
   // shows whether articles are saved
   saved: {type: Boolean, default: 0},
