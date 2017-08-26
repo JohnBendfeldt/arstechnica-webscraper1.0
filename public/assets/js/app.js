@@ -17,11 +17,13 @@ $(document).on("click", ".addnotes", function() {
       .done(function(data) {
         console.log(data);
         // The title of the article
-        $("#notes").append("<h2>" + data.title + "</h2>");
+        $("#notes").append("<h4>" + data.title + "</h4>");
         // A textarea to add a new note body
         $("#notes").append("<textarea id='bodyinput' name='body'></textarea>");
         // A button to submit a new note, with the id of the article saved to it
-        $("#notes").append("<button data-id='" + data._id + "' id='savenote' data-dismiss='modal'>Save Note</button>");
+        $("#notes").append("<button data-value='" + data._id + "' id='savenote' class='btn btn-info' data-dismiss='modal'>Save Note</button>");
+        // A close button
+        $("#notes").append("<button data-dismiss='modal' class='btn-danger btn-sm'>Close</button>");
   
         // If there's a note in the article
         if (data.note) {
@@ -57,4 +59,3 @@ $(document).on("click", "#savenote", function() {
     // Also, remove the values entered in the input and textarea for note entry
     $("#bodyinput").val("");
   });
-

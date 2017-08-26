@@ -128,7 +128,7 @@ router.get("/scrape", function(req, res) {
           }
           // Or send the newdoc to the browser
           else {
-            console.log("This is the note: " + newdoc);
+            console.log(newdoc);
             res.send(newdoc);
           }
         });
@@ -179,57 +179,5 @@ router.get("/scrape", function(req, res) {
             })
         })
     });
-
-    //retrieve the notes attached to saved articles to be displayed in the notes modal
-    router.get('/notes/:id', function (req, res) {
-        //Query to find the matching id to the passed in it
-        Article.findOne({_id: req.params.id})
-            .populate("notes") //Populate all of the notes associated with it
-            .exec(function (error, doc) { //execute the query
-                if (error) console.log(error);
-                // Otherwise, send the doc to the browser as a json object
-                else {
-                    res.json(doc);
-                }
-            });
-    });
-
-    // Add a note to a saved article
-    router.post("/", function (req, res) {
-        //create a new note with req.body
-        var newNote = new Note(req.body);
-        console.log(newNote);
-        // Save the new note to mongoose
-        newNote.save(function(error, doc) {
-          // Send any errors to the browser
-          if (error) {
-            res.send(error);
-          }
-          // Otherwise
-          else {
-            // Find our user and push the new note id into the User's notes array
-            Article.findOneAndUpdate({"_id":req.params.id}, { $set: { "note": doc._id } }, { new: true }, function(err, newdoc) {
-              // Send any errors to the browser
-              if (err) {
-                res.send(err);
-              }
-              // Or send the newdoc to the browser
-              else {
-                console.log("This is the note: " + newdoc);
-                res.send(newdoc);
-              }
-            });
-          }
-        });
-    });
-
-    //delete note, remove by the note id in the params
-    router.get('/deleteNote/:id', function(req, res){
-        Note.remove({"_id": req.params.id}, function(err, newdoc){
-            if(err) console.log(err);
-            res.redirect('/saved'); //redirect to reload the page
-        });
-    });
-
 
 module.exports = router;
