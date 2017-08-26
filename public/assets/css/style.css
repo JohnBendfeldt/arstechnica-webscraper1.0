@@ -1,5 +1,14 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Slabo+27px');
+
 nav, .nav-wrapper {
     background-color: #616161;
+}
+
+#ars {
+    background-color: #FF4E00;
+    color: #ffffff;
+    border-radius: 150px;
+    padding: 5px 5px 12px 5px;
 }
 
 a:hover {
@@ -8,6 +17,7 @@ a:hover {
 }
 
 h3 {
+    font-family: 'Montserrat', sans-serif;
     border-bottom: 3px solid #2bbbad;
     box-shadow: 3px 3px 9px;
     padding: 3px;
@@ -17,10 +27,12 @@ h4, h5 {
     border-bottom: 1.5px solid #2bbbad;
     box-shadow: 2px 2px 6px;
     padding: 3px;
+    font-family: 'Slabo 27px', serif;
 }
 
 p {
     color: #514A4A !important;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .panel-primary>.panel-heading {
@@ -32,6 +44,9 @@ p {
 
 a.title {
     color: #000;
+    font-family: 'Slabo 27px', serif;
+    font-size: 18px;
+    font-weight: 550;
 }
 
 a.title:hover {
