@@ -11,7 +11,7 @@ var Article = require("./models/Article.js");
 var request = require("request");
 var cheerio = require("cheerio");
 // Use Routes
-var routes = require("./routing/routes.js");
+var routes = require("./controllers/controller.js");
 // Set mongoose to leverage built in JavaScript ES6 Promises
 mongoose.Promise = Promise;
 var PORT = process.env.PORT || 8080;
