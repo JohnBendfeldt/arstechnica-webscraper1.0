@@ -1,30 +1,41 @@
 
 $(document).on("click", ".addnotes", function() {
-  console.log("The add notes button worked!")
-  var thisId = $(this).attr("data-value");
+    
+    console.log("The add notes button worked!");
 
-  $("#noteModalLabel").append(thisId);
-  // Now make an ajax call for the Article
-  $.ajax({
-    method: "GET",
-    url: "/articles/" + thisId
-  })
-    // With that done, add the note information to the page
-    .done(function(data) {
-      console.log(data);
-      // If there's a note in the article
-      if (data.note) {
-        // Place the body of the note in the body textarea
-        $("#bodyinput").val(data.note.body);
-      }
-    });
+    // Empty the notes from the note section
+    $("#notes").empty();
+    // Save the id from the p tag
+    var thisId = $(this).attr("data-value");
+  
+    // Now make an ajax call for the Article
+    $.ajax({
+      method: "GET",
+      url: "/articles/" + thisId
+    })
+      // With that done, add the note information to the page
+      .done(function(data) {
+        console.log(data);
+        // The title of the article
+        $("#notes").append("<h2>" + data.title + "</h2>");
+        // A textarea to add a new note body
+        $("#notes").append("<textarea id='bodyinput' name='body'></textarea>");
+        // A button to submit a new note, with the id of the article saved to it
+        $("#notes").append("<button data-id='" + data._id + "' id='savenote' data-dismiss='modal'>Save Note</button>");
+  
+        // If there's a note in the article
+        if (data.note) {
+          // Place the body of the note in the body textarea
+          $("#bodyinput").val(data.note.body);
+        }
+      });
 });
 
 // When you click the savenote button
 $(document).on("click", "#savenote", function() {
   console.log("The save note button worked!");
     // Grab the id associated with the article from the submit button
-    var thisId = $(this).attr("data-value");
+  var thisId = $(this).attr("data-value");
   
     // Run a POST request to change the note, using what's entered in the inputs
     $.ajax({
@@ -32,7 +43,7 @@ $(document).on("click", "#savenote", function() {
       url: "/articles/" + thisId,
       data: {
         // Value taken from note textarea
-        body: $("#notestext").val()
+        body: $("#bodyinput").val()
       }
     })
       // With that done
@@ -40,8 +51,10 @@ $(document).on("click", "#savenote", function() {
         // Log the response
         console.log(data);
         // Empty the notes section
-        $("#notestext").empty();
+        $("#notes").empty();
       });
+  
+    // Also, remove the values entered in the input and textarea for note entry
     $("#bodyinput").val("");
   });
 
