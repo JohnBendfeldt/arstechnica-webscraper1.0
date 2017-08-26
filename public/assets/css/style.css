@@ -25,7 +25,7 @@ h3 {
 
 h4, h5 {
     border-bottom: 1.5px solid #449D44;
-    box-shadow: 2px 2px 6px;
+    box-shadow: 2px 2px 6px #000;
     padding: 3px;
     font-family: 'Slabo 27px', serif;
 }
